@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "joinasfaculties",
+  "info": {
+    "singularName": "joinasfaculty",
+    "pluralName": "joinasfaculties",
+    "displayName": "Joinasfaculty"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "description": {
+      "type": "blocks"
+    },
+    "Title": {
+      "type": "string"
+    }
+  }
+}

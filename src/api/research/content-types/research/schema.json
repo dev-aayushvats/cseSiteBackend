@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "researchs",
+  "info": {
+    "singularName": "research",
+    "pluralName": "researchs",
+    "displayName": "research "
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

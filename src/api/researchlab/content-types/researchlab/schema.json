@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "researchlabs",
+  "info": {
+    "singularName": "researchlab",
+    "pluralName": "researchlabs",
+    "displayName": "researchlab",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Titlelab": {
+      "type": "string"
+    },
+    "lab": {
+      "type": "blocks"
+    }
+  }
+}
