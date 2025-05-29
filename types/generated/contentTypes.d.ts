@@ -373,6 +373,35 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAboutPageAboutPage extends Struct.CollectionTypeSchema {
+  collectionName: 'about_pages';
+  info: {
+    displayName: 'AboutPage';
+    pluralName: 'about-pages';
+    singularName: 'about-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.Blocks;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::about-page.about-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiAcademicruleAcademicrule
   extends Struct.CollectionTypeSchema {
   collectionName: 'academicrules';
@@ -491,37 +520,6 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiDepartmentBackgroundAndVisionDepartmentBackgroundAndVision
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'department_background_and_visions';
-  info: {
-    description: '';
-    displayName: 'about';
-    pluralName: 'department-background-and-visions';
-    singularName: 'department-background-and-vision';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Blocks;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::department-background-and-vision.department-background-and-vision'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -676,6 +674,41 @@ export interface ApiNewsNews extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPeoplePeople extends Struct.CollectionTypeSchema {
+  collectionName: 'peoples';
+  info: {
+    displayName: 'People';
+    pluralName: 'peoples';
+    singularName: 'people';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Contact: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Designation: Schema.Attribute.String;
+    Domain: Schema.Attribute.String;
+    Email: Schema.Attribute.String;
+    Image: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::people.people'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    Role: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Website: Schema.Attribute.String;
   };
 }
 
@@ -1281,16 +1314,17 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::academicrule.academicrule': ApiAcademicruleAcademicrule;
       'api::admission.admission': ApiAdmissionAdmission;
       'api::contact.contact': ApiContactContact;
       'api::course.course': ApiCourseCourse;
-      'api::department-background-and-vision.department-background-and-vision': ApiDepartmentBackgroundAndVisionDepartmentBackgroundAndVision;
       'api::department-leadership.department-leadership': ApiDepartmentLeadershipDepartmentLeadership;
       'api::electivecourse.electivecourse': ApiElectivecourseElectivecourse;
       'api::faq.faq': ApiFaqFaq;
       'api::joinasfaculty.joinasfaculty': ApiJoinasfacultyJoinasfaculty;
       'api::news.news': ApiNewsNews;
+      'api::people.people': ApiPeoplePeople;
       'api::research.research': ApiResearchResearch;
       'api::researchlab.researchlab': ApiResearchlabResearchlab;
       'api::talk-and-event.talk-and-event': ApiTalkAndEventTalkAndEvent;
