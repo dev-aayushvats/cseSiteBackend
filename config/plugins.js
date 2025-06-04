@@ -15,6 +15,19 @@ module.exports = () => ({
               { name: 'Designation', weight: 0.1 },
             ],
           },
+        },
+	{
+          uid: 'api::about-page.about-page',
+          modelName: 'about-page',
+          fuzzysortOptions: {
+            characterLimit: 300,
+            threshold: 0.6,
+            limit: 10,
+            keys: [
+              { name: 'Title', weight: 0.2 },
+              { name: 'Description', weight: 0.1 },
+            ],
+          },
         }
 	],
     },

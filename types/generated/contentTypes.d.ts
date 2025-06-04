@@ -376,6 +376,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiAboutPageAboutPage extends Struct.CollectionTypeSchema {
   collectionName: 'about_pages';
   info: {
+    description: '';
     displayName: 'AboutPage';
     pluralName: 'about-pages';
     singularName: 'about-page';
@@ -396,6 +397,64 @@ export interface ApiAboutPageAboutPage extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiAcadFaqAcadFaq extends Struct.CollectionTypeSchema {
+  collectionName: 'acad_faqs';
+  info: {
+    displayName: 'Acad-Faq';
+    pluralName: 'acad-faqs';
+    singularName: 'acad-faq';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Answer: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::acad-faq.acad-faq'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Question: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiAcademicRulesAcademicRules
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'academic_ruless';
+  info: {
+    displayName: 'Academic-Rules';
+    pluralName: 'academic-ruless';
+    singularName: 'academic-rules';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::academic-rules.academic-rules'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Rules: Schema.Attribute.JSON;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -467,6 +526,65 @@ export interface ApiAdmissionAdmission extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAdmissionsPageAdmissionsPage
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'admissions_pages';
+  info: {
+    displayName: 'AdmissionsPage';
+    pluralName: 'admissions-pages';
+    singularName: 'admissions-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    allData: Schema.Attribute.JSON;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::admissions-page.admissions-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiContactPointContactPoint
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'contact_points';
+  info: {
+    displayName: 'Contact Points';
+    pluralName: 'contact-points';
+    singularName: 'contact-point';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Email: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact-point.contact-point'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiContactContact extends Struct.CollectionTypeSchema {
   collectionName: 'contacts';
   info: {
@@ -500,7 +618,7 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
   collectionName: 'courses';
   info: {
     description: '';
-    displayName: 'Corecourses';
+    displayName: 'Courses';
     pluralName: 'courses';
     singularName: 'course';
   };
@@ -519,42 +637,6 @@ export interface ApiCourseCourse extends Struct.CollectionTypeSchema {
       'api::course.course'
     > &
       Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiDepartmentLeadershipDepartmentLeadership
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'department_leaderships';
-  info: {
-    displayName: 'Faculty';
-    pluralName: 'department-leaderships';
-    singularName: 'department-leadership';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    about: Schema.Attribute.Blocks;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    facultytype: Schema.Attribute.Enumeration<
-      ['Department Leadership', 'Faculty', 'Staff Members', 'Former Members']
-    >;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::department-leadership.department-leadership'
-    > &
-      Schema.Attribute.Private;
-    photo: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -622,6 +704,7 @@ export interface ApiJoinasfacultyJoinasfaculty
   extends Struct.CollectionTypeSchema {
   collectionName: 'joinasfaculties';
   info: {
+    description: '';
     displayName: 'Joinasfaculty';
     pluralName: 'joinasfaculties';
     singularName: 'joinasfaculty';
@@ -641,6 +724,7 @@ export interface ApiJoinasfacultyJoinasfaculty
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    table: Schema.Attribute.RichText;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -715,7 +799,8 @@ export interface ApiPeoplePeople extends Struct.CollectionTypeSchema {
 export interface ApiResearchResearch extends Struct.CollectionTypeSchema {
   collectionName: 'researchs';
   info: {
-    displayName: 'research ';
+    description: '';
+    displayName: 'researchtable';
     pluralName: 'researchs';
     singularName: 'research';
   };
@@ -726,7 +811,6 @@ export interface ApiResearchResearch extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -734,6 +818,7 @@ export interface ApiResearchResearch extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    table: Schema.Attribute.RichText;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1315,11 +1400,14 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about-page.about-page': ApiAboutPageAboutPage;
+      'api::acad-faq.acad-faq': ApiAcadFaqAcadFaq;
+      'api::academic-rules.academic-rules': ApiAcademicRulesAcademicRules;
       'api::academicrule.academicrule': ApiAcademicruleAcademicrule;
       'api::admission.admission': ApiAdmissionAdmission;
+      'api::admissions-page.admissions-page': ApiAdmissionsPageAdmissionsPage;
+      'api::contact-point.contact-point': ApiContactPointContactPoint;
       'api::contact.contact': ApiContactContact;
       'api::course.course': ApiCourseCourse;
-      'api::department-leadership.department-leadership': ApiDepartmentLeadershipDepartmentLeadership;
       'api::electivecourse.electivecourse': ApiElectivecourseElectivecourse;
       'api::faq.faq': ApiFaqFaq;
       'api::joinasfaculty.joinasfaculty': ApiJoinasfacultyJoinasfaculty;

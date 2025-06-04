@@ -4,7 +4,8 @@
   "info": {
     "singularName": "research",
     "pluralName": "researchs",
-    "displayName": "research "
+    "displayName": "researchtable",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,8 +14,8 @@
     "Title": {
       "type": "string"
     },
-    "description": {
-      "type": "text"
+    "table": {
+      "type": "richtext"
     }
   }
 }
