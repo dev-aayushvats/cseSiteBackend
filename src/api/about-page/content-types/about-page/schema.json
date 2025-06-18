@@ -1,20 +1,20 @@
 {
   "kind": "collectionType",
-  "collectionName": "courses",
+  "collectionName": "about_pages",
   "info": {
-    "singularName": "course",
-    "pluralName": "courses",
-    "displayName": "Courses",
+    "singularName": "about-page",
+    "pluralName": "about-pages",
+    "displayName": "AboutPage",
     "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "coursetype": {
+    "Title": {
       "type": "string"
     },
-    "about": {
+    "Description": {
       "type": "blocks"
     }
   }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "joinasfaculty",
     "pluralName": "joinasfaculties",
-    "displayName": "Joinasfaculty"
+    "displayName": "Joinasfaculty",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,6 +16,9 @@
     },
     "Title": {
       "type": "string"
+    },
+    "table": {
+      "type": "richtext"
     }
   }
 }
