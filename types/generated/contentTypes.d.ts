@@ -796,13 +796,12 @@ export interface ApiPeoplePeople extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiResearchResearch extends Struct.CollectionTypeSchema {
-  collectionName: 'researchs';
+export interface ApiResearchLabResearchLab extends Struct.CollectionTypeSchema {
+  collectionName: 'research_labs';
   info: {
-    description: '';
-    displayName: 'researchtable';
-    pluralName: 'researchs';
-    singularName: 'research';
+    displayName: 'ResearchLab';
+    pluralName: 'research-labs';
+    singularName: 'research-lab';
   };
   options: {
     draftAndPublish: true;
@@ -811,45 +810,51 @@ export interface ApiResearchResearch extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Link: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::research.research'
+      'api::research-lab.research-lab'
     > &
       Schema.Attribute.Private;
+    Name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    table: Schema.Attribute.RichText;
-    Title: Schema.Attribute.String;
+    Type: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
   };
 }
 
-export interface ApiResearchlabResearchlab extends Struct.CollectionTypeSchema {
-  collectionName: 'researchlabs';
+export interface ApiResearchProjectResearchProject
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'research_projects';
   info: {
-    description: '';
-    displayName: 'researchlab';
-    pluralName: 'researchlabs';
-    singularName: 'researchlab';
+    displayName: 'ResearchProjects';
+    pluralName: 'research-projects';
+    singularName: 'research-project';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    Area: Schema.Attribute.String;
+    CoPI: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    lab: Schema.Attribute.Blocks;
+    CurrentStatus: Schema.Attribute.String;
+    Duration: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::researchlab.researchlab'
+      'api::research-project.research-project'
     > &
       Schema.Attribute.Private;
+    PI: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    Titlelab: Schema.Attribute.String;
+    Title: Schema.Attribute.String;
+    Type: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1413,8 +1418,8 @@ declare module '@strapi/strapi' {
       'api::joinasfaculty.joinasfaculty': ApiJoinasfacultyJoinasfaculty;
       'api::news.news': ApiNewsNews;
       'api::people.people': ApiPeoplePeople;
-      'api::research.research': ApiResearchResearch;
-      'api::researchlab.researchlab': ApiResearchlabResearchlab;
+      'api::research-lab.research-lab': ApiResearchLabResearchLab;
+      'api::research-project.research-project': ApiResearchProjectResearchProject;
       'api::talk-and-event.talk-and-event': ApiTalkAndEventTalkAndEvent;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
