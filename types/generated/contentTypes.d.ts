@@ -879,6 +879,7 @@ export interface ApiTalkAndEventTalkAndEvent
       Schema.Attribute.Private;
     date: Schema.Attribute.String;
     designation: Schema.Attribute.String;
+    link: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

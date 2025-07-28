@@ -25,6 +25,9 @@
     },
     "date": {
       "type": "string"
+    },
+    "link": {
+      "type": "string"
     }
   }
 }
