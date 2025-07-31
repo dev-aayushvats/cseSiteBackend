@@ -555,6 +555,36 @@ export interface ApiAdmissionsPageAdmissionsPage
   };
 }
 
+export interface ApiCarouselImagesCarouselImages
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'carousel_imagess';
+  info: {
+    displayName: 'Carousel-images';
+    pluralName: 'carousel-imagess';
+    singularName: 'carousel-images';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.String;
+    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::carousel-images.carousel-images'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiContactPointContactPoint
   extends Struct.CollectionTypeSchema {
   collectionName: 'contact_points';
@@ -694,6 +724,36 @@ export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     question: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiGalleryImageGalleryImage
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'gallery_images';
+  info: {
+    displayName: 'Gallery-Images';
+    pluralName: 'gallery-images';
+    singularName: 'gallery-image';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.String;
+    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::gallery-image.gallery-image'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1411,11 +1471,13 @@ declare module '@strapi/strapi' {
       'api::academicrule.academicrule': ApiAcademicruleAcademicrule;
       'api::admission.admission': ApiAdmissionAdmission;
       'api::admissions-page.admissions-page': ApiAdmissionsPageAdmissionsPage;
+      'api::carousel-images.carousel-images': ApiCarouselImagesCarouselImages;
       'api::contact-point.contact-point': ApiContactPointContactPoint;
       'api::contact.contact': ApiContactContact;
       'api::course.course': ApiCourseCourse;
       'api::electivecourse.electivecourse': ApiElectivecourseElectivecourse;
       'api::faq.faq': ApiFaqFaq;
+      'api::gallery-image.gallery-image': ApiGalleryImageGalleryImage;
       'api::joinasfaculty.joinasfaculty': ApiJoinasfacultyJoinasfaculty;
       'api::news.news': ApiNewsNews;
       'api::people.people': ApiPeoplePeople;
