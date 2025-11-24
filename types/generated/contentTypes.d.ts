@@ -760,14 +760,13 @@ export interface ApiGalleryImageGalleryImage
   };
 }
 
-export interface ApiJoinasfacultyJoinasfaculty
+export interface ApiJoinAsFacultyPageJoinAsFacultyPage
   extends Struct.CollectionTypeSchema {
-  collectionName: 'joinasfaculties';
+  collectionName: 'join_as_faculty_pages';
   info: {
-    description: '';
-    displayName: 'Joinasfaculty';
-    pluralName: 'joinasfaculties';
-    singularName: 'joinasfaculty';
+    displayName: 'JoinAsFacultyPage';
+    pluralName: 'join-as-faculty-pages';
+    singularName: 'join-as-faculty-page';
   };
   options: {
     draftAndPublish: true;
@@ -776,15 +775,15 @@ export interface ApiJoinasfacultyJoinasfaculty
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Blocks;
+    Description: Schema.Attribute.Text;
+    Level: Schema.Attribute.Integer;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::joinasfaculty.joinasfaculty'
+      'api::join-as-faculty-page.join-as-faculty-page'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    table: Schema.Attribute.RichText;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -947,6 +946,7 @@ export interface ApiTalkAndEventTalkAndEvent
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    sortingDate: Schema.Attribute.DateTime;
     Speaker: Schema.Attribute.String;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -1478,7 +1478,7 @@ declare module '@strapi/strapi' {
       'api::electivecourse.electivecourse': ApiElectivecourseElectivecourse;
       'api::faq.faq': ApiFaqFaq;
       'api::gallery-image.gallery-image': ApiGalleryImageGalleryImage;
-      'api::joinasfaculty.joinasfaculty': ApiJoinasfacultyJoinasfaculty;
+      'api::join-as-faculty-page.join-as-faculty-page': ApiJoinAsFacultyPageJoinAsFacultyPage;
       'api::news.news': ApiNewsNews;
       'api::people.people': ApiPeoplePeople;
       'api::research-lab.research-lab': ApiResearchLabResearchLab;

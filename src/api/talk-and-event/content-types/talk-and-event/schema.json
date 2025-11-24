@@ -28,6 +28,9 @@
     },
     "link": {
       "type": "string"
+    },
+    "sortingDate": {
+      "type": "datetime"
     }
   }
 }
